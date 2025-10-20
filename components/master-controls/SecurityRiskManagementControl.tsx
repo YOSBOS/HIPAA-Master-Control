@@ -1,17 +1,54 @@
 import React from 'react';
 import {
-  MasterControl,
-  EvidenceItem,
-  AIGuidance,
   EVIDENCE_TYPES,
-  MASTER_CONTROL_STATUSES,
+  MASTER_CONTROL_CATEGORIES,
   getMasterControlStatusDisplay,
   calculateMasterControlProgress,
   formatBusinessDate,
   generateUniqueId
-} from '../../types/hipaa';
-import { MASTER_CONTROL_CATEGORIES } from '../../lib/hipaa/constants';
+} from '../../lib/hipaa';
 import { CheckCircleIcon, ExclamationTriangleIcon, ClockIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { Card, CardHeader, CardContent, CardFooter } from '../ui/Card';
+
+// Local interfaces for this component
+interface EvidenceItem {
+  id: string;
+  masterControlId: string;
+  type: string;
+  actionPrompt: string;
+  description: string;
+  status: 'approved' | 'needs_review' | 'pending';
+  submissionDate?: Date;
+  documentUrl?: string;
+  notes?: string;
+  assignedTo?: string;
+  lastReviewDate?: Date;
+}
+
+interface MasterControl {
+  id: string;
+  name: string;
+  businessDescription: string;
+  category: string;
+  status: 'all_set' | 'needs_attention' | 'action_required' | 'in_progress';
+  progress: number;
+  lastActivityDate: Date;
+  evidenceItems: EvidenceItem[];
+  linkedSubControls: string[];
+  overallComplianceStatus: string;
+  aiSummary: string;
+}
+
+interface AIGuidance {
+  id: string;
+  contextId: string;
+  contextType: string;
+  explanation: string;
+  examples: string[];
+  actionSuggestions: string[];
+  summaryOfMissing: string;
+  generatedAt: Date;
+}
 
 const SecurityRiskManagementControl: React.FC = () => {
   // Simulate data for Security Risk Management & Contingency Planning Master Control
@@ -27,7 +64,7 @@ const SecurityRiskManagementControl: React.FC = () => {
       {
         id: generateUniqueId(),
         masterControlId: 'mc-security-risk-management',
-        type: EVIDENCE_TYPES.DOCUMENT_UPLOAD,
+        type: EVIDENCE_TYPES.DOCUMENT,
         actionPrompt: 'Upload your current risk analysis report and risk management plan.',
         description: 'These documents show how you identify and address security risks to patient information.',
         status: 'approved',
@@ -38,7 +75,18 @@ const SecurityRiskManagementControl: React.FC = () => {
       {
         id: generateUniqueId(),
         masterControlId: 'mc-security-risk-management',
-        type: EVIDENCE_TYPES.ASSIGN_PERSON,
+        type: EVIDENCE_TYPES.DOCUMENT,
+        actionPrompt: 'Upload the designation letter for your Security Officer.',
+        description: 'HIPAA requires a designated Security Officer responsible for implementing and maintaining security policies.',
+        status: 'approved',
+        submissionDate: new Date('2024-09-01T09:00:00Z'),
+        documentUrl: '/documents/security-officer-designation.pdf',
+        notes: 'Dr. Sarah Martinez designated as Security Officer with written authorization.',
+      },
+      {
+        id: generateUniqueId(),
+        masterControlId: 'mc-security-risk-management',
+        type: EVIDENCE_TYPES.ASSIGNMENT,
         actionPrompt: 'Assign a person responsible for ongoing risk management and contingency planning.',
         description: 'Regular oversight ensures risks are continuously monitored and contingency plans remain current.',
         status: 'approved',
@@ -59,7 +107,7 @@ const SecurityRiskManagementControl: React.FC = () => {
       {
         id: generateUniqueId(),
         masterControlId: 'mc-security-risk-management',
-        type: EVIDENCE_TYPES.RECORD_DATE,
+        type: EVIDENCE_TYPES.RECORD,
         actionPrompt: 'Record the date of your last comprehensive risk assessment.',
         description: 'Regular risk assessments help identify new threats and vulnerabilities.',
         status: 'pending',
@@ -109,31 +157,34 @@ const SecurityRiskManagementControl: React.FC = () => {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold text-gray-900">{masterControl.name}</h2>
-        <div className="flex items-center space-x-2">
-          {getStatusIcon(masterControl.status)}
-          <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
-            masterControl.status === 'all_set' ? 'bg-green-100 text-green-800' :
-            masterControl.status === 'needs_attention' ? 'bg-yellow-100 text-yellow-800' :
-            masterControl.status === 'action_required' ? 'bg-red-100 text-red-800' :
-            'bg-blue-100 text-blue-800'
-          }`}>
-            {getMasterControlStatusDisplay(masterControl.status)}
-          </span>
+    <Card className="h-full">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-gray-900">{masterControl.name}</h2>
+          <div className="flex items-center space-x-2">
+            {getStatusIcon(masterControl.status)}
+            <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+              masterControl.status === 'all_set' ? 'bg-green-100 text-green-800' :
+              masterControl.status === 'needs_attention' ? 'bg-yellow-100 text-yellow-800' :
+              masterControl.status === 'action_required' ? 'bg-red-100 text-red-800' :
+              'bg-blue-100 text-blue-800'
+            }`}>
+              {getMasterControlStatusDisplay(masterControl.status)}
+            </span>
+          </div>
         </div>
-      </div>
+      </CardHeader>
 
-      <p className="text-gray-700 mb-4">{masterControl.businessDescription}</p>
+      <CardContent>
+        <p className="text-gray-700 mb-4">{masterControl.businessDescription}</p>
 
-      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-        <div
-          className="bg-blue-600 h-2.5 rounded-full"
-          style={{ width: `${masterControl.progress}%` }}
-        ></div>
-      </div>
-      <p className="text-sm text-gray-600 mb-6">Progress: {masterControl.progress}% Complete</p>
+        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+          <div
+            className="bg-blue-600 h-2.5 rounded-full"
+            style={{ width: `${masterControl.progress}%` }}
+          ></div>
+        </div>
+        <p className="text-sm text-gray-600 mb-6">Progress: {masterControl.progress}% Complete</p>
 
       <h3 className="text-xl font-semibold text-gray-800 mb-3">Your Actions Needed:</h3>
       <div className="space-y-4 mb-6">
@@ -173,8 +224,9 @@ const SecurityRiskManagementControl: React.FC = () => {
         </ul>
       </div>
 
-      <p className="text-sm text-gray-500 mt-6">Last Activity: {formatBusinessDate(masterControl.lastActivityDate!)}</p>
-    </div>
+        <p className="text-sm text-gray-500 mt-6">Last Activity: {formatBusinessDate(masterControl.lastActivityDate!)}</p>
+      </CardContent>
+    </Card>
   );
 };
 

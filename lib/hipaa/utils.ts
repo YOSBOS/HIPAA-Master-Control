@@ -454,20 +454,58 @@ export function formatBusinessTimeEstimate(hours: number): string {
   }
 }
 
+/**
+ * Generate a unique identifier
+ * 
+ * Business Purpose: Creates unique IDs for evidence items, guidance, and other entities
+ * 
+ * User Experience: Ensures all items have unique identifiers for tracking
+ */
+export function generateUniqueId(): string {
+  return `id_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+/**
+ * Get master control status display text
+ * 
+ * Business Purpose: Converts technical status to business-friendly display text
+ * 
+ * User Experience: Clear status messages that users understand
+ */
+export function getMasterControlStatusDisplay(status: string): string {
+  switch (status) {
+    case 'all_set':
+      return 'All Set';
+    case 'needs_attention':
+      return 'Needs Attention';
+    case 'action_required':
+      return 'Action Required';
+    case 'in_progress':
+      return 'In Progress';
+    default:
+      return 'Unknown Status';
+  }
+}
+
+/**
+ * Calculate master control progress
+ * 
+ * Business Purpose: Shows progress percentage for a master control
+ * 
+ * User Experience: Clear progress indicators that motivate completion
+ */
+export function calculateMasterControlProgress(control: MasterControl): number {
+  const totalEvidence = control.evidence?.length || 0;
+  if (totalEvidence === 0) return 0;
+  
+  const completedEvidence = control.evidence?.filter((item: EvidenceItem) => 
+    item.status === 'uploaded' || item.status === 'confirmed' || item.status === 'recorded' || item.status === 'assigned'
+  ).length || 0;
+  
+  return Math.round((completedEvidence / totalEvidence) * 100);
+}
+
 // ============================================================================
-// EXPORT ALL UTILITIES
+// ALL UTILITIES ARE ALREADY EXPORTED WITH 'export function' ABOVE
 // ============================================================================
-export {
-  getBusinessStatusMessage,
-  getBusinessPriorityMessage,
-  getBusinessEvidenceStatusMessage,
-  calculateComplianceProgress,
-  calculateEstimatedCompletion,
-  calculateMasterControlSummary,
-  validateMasterControl,
-  validateEvidenceItem,
-  formatBusinessDate,
-  formatBusinessPercentage,
-  formatBusinessTimeEstimate
-};
 

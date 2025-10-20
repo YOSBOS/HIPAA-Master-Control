@@ -6,9 +6,12 @@
  */
 
 import React from 'react';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import WorkforceTrainingControl from '../../components/master-controls/WorkforceTrainingControl';
 import AccessControlControl from '../../components/master-controls/AccessControlControl';
 import SecurityRiskManagementControl from '../../components/master-controls/SecurityRiskManagementControl';
+import { Card, CardHeader, CardContent, CardFooter } from '../../components/ui/Card';
 
 export default function MasterControlsPage() {
   // Sample data for demonstration
@@ -87,6 +90,17 @@ export default function MasterControlsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Return to Dashboard Button */}
+        <div className="mb-6">
+          <Link 
+            href="/dashboard" 
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            Return to Dashboard
+          </Link>
+        </div>
+        
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -163,21 +177,25 @@ export default function MasterControlsPage() {
                 status: 'Coming Soon'
               }
             ].map((control, index) => (
-              <div key={index} className="bg-white rounded-lg shadow border border-gray-200 p-6 opacity-75">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="text-2xl">{control.icon}</div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{control.title}</h3>
-                    <p className="text-sm text-gray-600">{control.description}</p>
+              <Card key={index} className="opacity-75">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="text-2xl">{control.icon}</div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">{control.title}</h3>
+                      <p className="text-sm text-gray-600">{control.description}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{control.status}</span>
-                  <div className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
-                    Phase 2
+                </CardHeader>
+                <CardFooter>
+                  <div className="flex justify-between items-center w-full">
+                    <span className="text-sm text-gray-500">{control.status}</span>
+                    <div className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+                      Phase 2
+                    </div>
                   </div>
-                </div>
-              </div>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>

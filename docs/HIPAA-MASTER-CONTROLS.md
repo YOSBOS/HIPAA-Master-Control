@@ -152,6 +152,7 @@ This document provides the comprehensive framework for all 8 Master Controls tha
 
 **HIPAA Standards:**
 - **164.308(a)(1)(i)** - Security management process
+- **164.308(a)(2)** - Assigned security responsibility
 - **164.308(a)(1)(ii)(A)** - Risk analysis
 - **164.308(a)(1)(ii)(B)** - Risk management
 - **164.308(a)(1)(ii)(C)** - Sanction policy
@@ -170,6 +171,7 @@ This document provides the comprehensive framework for all 8 Master Controls tha
 - Completed risk analysis reports (initial and periodic)
 - Risk management plan with mitigation actions
 - Sanction policy and enforcement records
+- Security Officer designation letter (164.308(a)(2))
 - Data backup and restoration logs
 - Disaster recovery and emergency operation procedures
 - Testing results and revision logs

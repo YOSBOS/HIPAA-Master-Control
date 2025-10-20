@@ -15,6 +15,7 @@ import {
   ClockIcon,
   LockClosedIcon
 } from '@heroicons/react/24/outline';
+import { Card, CardHeader, CardContent, CardFooter } from '../ui/Card';
 
 interface EvidenceItem {
   id: string;
@@ -74,60 +75,62 @@ export default function AccessControlControl({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
-          <div className="p-2 bg-purple-100 rounded-lg">
-            <KeyIcon className="w-6 h-6 text-purple-600" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-gray-900">
-              Access Control & User Management
-            </h2>
-            <p className="text-sm text-gray-600">
-              Manages who has access to patient information systems and what they can do
-            </p>
-          </div>
-        </div>
-        <div className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 ${getStatusColor(status)}`}>
-          {getStatusIcon(status)}
-          <span>{getStatusText(status)}</span>
-        </div>
-      </div>
-
-      {/* Progress Bar */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-gray-700">Progress</span>
-          <span className="text-sm text-gray-500">{progress}%</span>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-2">
-          <div 
-            className="bg-purple-600 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-      </div>
-
-      {/* AI Summary */}
-      {aiSummary && (
-        <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
-          <div className="flex items-start space-x-2">
-            <div className="p-1 bg-purple-100 rounded">
-              <ShieldCheckIcon className="w-4 h-4 text-purple-600" />
+    <Card className="h-full">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-purple-100 rounded-lg">
+              <KeyIcon className="w-6 h-6 text-purple-600" />
             </div>
             <div>
-              <h4 className="text-sm font-medium text-purple-900 mb-1">AI Guidance</h4>
-              <p className="text-sm text-purple-800">{aiSummary}</p>
+              <h2 className="text-xl font-bold text-gray-900">
+                Access Control & User Management
+              </h2>
+              <p className="text-sm text-gray-600">
+                Manages who has access to patient information systems and what they can do
+              </p>
             </div>
           </div>
+          <div className={`px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-2 ${getStatusColor(status)}`}>
+            {getStatusIcon(status)}
+            <span>{getStatusText(status)}</span>
+          </div>
         </div>
-      )}
+      </CardHeader>
 
-      {/* Evidence Items */}
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-3">Action Items</h3>
+      <CardContent>
+        {/* Progress Bar */}
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-medium text-gray-700">Progress</span>
+            <span className="text-sm text-gray-500">{progress}%</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* AI Summary */}
+        {aiSummary && (
+          <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+            <div className="flex items-start space-x-2">
+              <div className="p-1 bg-purple-100 rounded">
+                <ShieldCheckIcon className="w-4 h-4 text-purple-600" />
+              </div>
+              <div>
+                <h4 className="text-sm font-medium text-purple-900 mb-1">AI Guidance</h4>
+                <p className="text-sm text-purple-800">{aiSummary}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Evidence Items */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-3">Action Items</h3>
         {evidenceItems.map((item) => (
           <div key={item.id} className="border border-gray-200 rounded-lg p-4">
             <div className="flex items-start justify-between">
@@ -160,16 +163,17 @@ export default function AccessControlControl({
             )}
           </div>
         ))}
-      </div>
+        </div>
+      </CardContent>
 
       {/* Last Activity */}
       {lastActivityDate && (
-        <div className="mt-6 pt-4 border-t border-gray-200">
+        <CardFooter>
           <p className="text-xs text-gray-500">
             Last activity: {lastActivityDate.toLocaleDateString()}
           </p>
-        </div>
+        </CardFooter>
       )}
-    </div>
+    </Card>
   );
 }
