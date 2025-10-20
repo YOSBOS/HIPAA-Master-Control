@@ -11,83 +11,85 @@ import {
   generateUniqueId
 } from '../../types/hipaa';
 import { MASTER_CONTROL_CATEGORIES } from '../../lib/hipaa/constants';
-import { CheckCircleIcon, ExclamationTriangleIcon, ClockIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { CheckCircleIcon, ExclamationTriangleIcon, ClockIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 
-const AuditMonitoringControl: React.FC = () => {
-  // Simulate data for Audit & Monitoring Master Control
+const SecurityRiskManagementControl: React.FC = () => {
+  // Simulate data for Security Risk Management & Contingency Planning Master Control
   const masterControl: MasterControl = {
-    id: 'mc-audit-monitoring',
-    name: 'Audit & Monitoring',
-    businessDescription: 'Regularly reviews system activity and compliance records to ensure ongoing HIPAA adherence.',
-    category: MASTER_CONTROL_CATEGORIES.COMPLIANCE,
-    status: 'in_progress',
-    progress: 55,
-    lastActivityDate: new Date('2024-10-14T12:20:00Z'),
+    id: 'mc-security-risk-management',
+    name: 'Security Risk Management & Contingency Planning',
+    businessDescription: 'Ensures the organization proactively identifies, evaluates, and manages security risks to patient information, while maintaining operational continuity in emergencies or system failures.',
+    category: MASTER_CONTROL_CATEGORIES.SECURITY,
+    status: 'needs_attention',
+    progress: 40,
+    lastActivityDate: new Date('2024-10-08T14:20:00Z'),
     evidenceItems: [
       {
         id: generateUniqueId(),
-        masterControlId: 'mc-audit-monitoring',
+        masterControlId: 'mc-security-risk-management',
         type: EVIDENCE_TYPES.DOCUMENT_UPLOAD,
-        actionPrompt: 'Upload your audit log review procedures and monitoring policies.',
-        description: 'These procedures ensure regular review of system activity and access logs.',
+        actionPrompt: 'Upload your current risk analysis report and risk management plan.',
+        description: 'These documents show how you identify and address security risks to patient information.',
         status: 'approved',
-        submissionDate: new Date('2024-08-25T15:00:00Z'),
-        documentUrl: '/documents/audit-monitoring-procedures-2024.pdf',
-        notes: 'Updated procedures include automated monitoring alerts and quarterly reviews.',
+        submissionDate: new Date('2024-08-15T10:00:00Z'),
+        documentUrl: '/documents/risk-analysis-2024.pdf',
+        notes: 'Annual risk assessment completed with identified vulnerabilities and mitigation plans.',
       },
       {
         id: generateUniqueId(),
-        masterControlId: 'mc-audit-monitoring',
+        masterControlId: 'mc-security-risk-management',
         type: EVIDENCE_TYPES.ASSIGN_PERSON,
-        actionPrompt: 'Assign a person responsible for audit log review and monitoring.',
-        description: 'Regular monitoring ensures compliance issues are identified and addressed quickly.',
+        actionPrompt: 'Assign a person responsible for ongoing risk management and contingency planning.',
+        description: 'Regular oversight ensures risks are continuously monitored and contingency plans remain current.',
         status: 'approved',
-        assignedTo: 'Jennifer Lee (Compliance Analyst)',
-        submissionDate: new Date('2024-09-01T10:00:00Z'),
-        notes: 'Compliance Analyst responsible for weekly audit log reviews.',
+        assignedTo: 'Dr. Sarah Martinez (Security Officer)',
+        submissionDate: new Date('2024-09-01T09:00:00Z'),
+        notes: 'Security Officer responsible for risk management and contingency planning oversight.',
       },
       {
         id: generateUniqueId(),
-        masterControlId: 'mc-audit-monitoring',
+        masterControlId: 'mc-security-risk-management',
         type: EVIDENCE_TYPES.CONFIRMATION,
-        actionPrompt: 'Confirm audit logging is enabled on all systems containing patient information.',
-        description: 'Comprehensive logging ensures all access to patient data is tracked.',
+        actionPrompt: 'Confirm your data backup and disaster recovery procedures are tested and documented.',
+        description: 'Regular testing ensures your backup and recovery systems work when needed.',
         status: 'needs_review',
-        submissionDate: new Date('2024-10-12T11:00:00Z'),
-        notes: 'Most systems enabled, but need to verify new EHR system logging.',
+        submissionDate: new Date('2024-10-05T16:00:00Z'),
+        notes: 'Backup testing scheduled for next week, disaster recovery plan needs updating.',
       },
       {
         id: generateUniqueId(),
-        masterControlId: 'mc-audit-monitoring',
+        masterControlId: 'mc-security-risk-management',
         type: EVIDENCE_TYPES.RECORD_DATE,
-        actionPrompt: 'Record the date of your last comprehensive compliance audit.',
-        description: 'Regular audits ensure all HIPAA requirements are being met.',
+        actionPrompt: 'Record the date of your last comprehensive risk assessment.',
+        description: 'Regular risk assessments help identify new threats and vulnerabilities.',
         status: 'pending',
         lastReviewDate: undefined,
-        notes: 'Scheduled for Q1 2025 comprehensive HIPAA compliance audit.',
+        notes: 'Next comprehensive risk assessment scheduled for Q1 2025.',
       },
     ],
     linkedSubControls: [], // Simplified for demo
-    overallComplianceStatus: 'partially_compliant',
-    aiSummary: 'Good start on audit and monitoring! Your procedures are in place and you have a designated reviewer. Focus on completing the EHR logging verification and scheduling the comprehensive audit.',
+    overallComplianceStatus: 'needs_improvement',
+    aiSummary: 'Your risk management foundation is in place, but contingency planning needs attention. Focus on completing backup testing and updating your disaster recovery procedures.',
   };
 
   const aiGuidance: AIGuidance = {
     id: generateUniqueId(),
     contextId: masterControl.id,
     contextType: 'MasterControl',
-    explanation: 'Audit and monitoring are essential for maintaining HIPAA compliance. Regular review of system activity helps identify potential security issues, unauthorized access, and compliance gaps before they become serious problems.',
+    explanation: 'Risk management is the foundation of HIPAA compliance. By identifying and addressing security risks proactively, you prevent breaches before they happen. Contingency planning ensures you can continue operations even during emergencies or system failures.',
     examples: [
-      'Audit logs showing who accessed patient information and when.',
-      'Regular review procedures for system activity and access patterns.',
-      'Comprehensive compliance audits to assess overall HIPAA adherence.'
+      'Comprehensive risk analysis identifying all potential threats to patient information.',
+      'Data backup procedures with regular testing and off-site storage.',
+      'Disaster recovery plans for various emergency scenarios.',
+      'Emergency mode operation procedures for critical systems.'
     ],
     actionSuggestions: [
-      'Verify that all systems containing patient information have comprehensive audit logging enabled.',
-      'Schedule regular audit log reviews to identify any unusual or unauthorized access patterns.',
-      'Plan a comprehensive compliance audit to assess your overall HIPAA compliance status.'
+      'Complete your data backup testing to ensure recovery procedures work properly.',
+      'Update your disaster recovery plan to reflect current systems and procedures.',
+      'Schedule regular risk assessments to identify new threats and vulnerabilities.',
+      'Train staff on emergency procedures and contingency operations.'
     ],
-    summaryOfMissing: 'You need to verify EHR system logging and schedule the comprehensive compliance audit.',
+    summaryOfMissing: 'You need to complete backup testing, update disaster recovery procedures, and schedule the next comprehensive risk assessment.',
     generatedAt: new Date(),
   };
 
@@ -147,7 +149,7 @@ const AuditMonitoringControl: React.FC = () => {
               <p className="text-sm text-gray-600">{item.description}</p>
               {item.documentUrl && (
                 <a href={item.documentUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm flex items-center mt-1">
-                  <MagnifyingGlassIcon className="h-4 w-4 mr-1" /> View Audit Procedures
+                  <ShieldCheckIcon className="h-4 w-4 mr-1" /> View Risk Analysis
                 </a>
               )}
               {item.assignedTo && <p className="text-xs text-gray-500 mt-1">Assigned To: {item.assignedTo}</p>}
@@ -176,4 +178,4 @@ const AuditMonitoringControl: React.FC = () => {
   );
 };
 
-export default AuditMonitoringControl;
+export default SecurityRiskManagementControl;

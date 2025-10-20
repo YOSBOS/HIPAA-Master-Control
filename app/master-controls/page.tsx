@@ -6,15 +6,9 @@
  */
 
 import React from 'react';
-import Link from 'next/link';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import WorkforceTrainingControl from '../../components/master-controls/WorkforceTrainingControl';
 import AccessControlControl from '../../components/master-controls/AccessControlControl';
-import VendorManagementControl from '../../components/master-controls/VendorManagementControl';
-import IncidentResponseControl from '../../components/master-controls/IncidentResponseControl';
-import PhysicalSecurityControl from '../../components/master-controls/PhysicalSecurityControl';
-import TechnicalSafeguardsControl from '../../components/master-controls/TechnicalSafeguardsControl';
-import AuditMonitoringControl from '../../components/master-controls/AuditMonitoringControl';
+import SecurityRiskManagementControl from '../../components/master-controls/SecurityRiskManagementControl';
 
 export default function MasterControlsPage() {
   // Sample data for demonstration
@@ -93,17 +87,6 @@ export default function MasterControlsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Return to Dashboard Button */}
-        <div className="mb-6">
-          <Link 
-            href="/dashboard" 
-            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            <ArrowLeftIcon className="h-5 w-5 mr-2" />
-            Return to Dashboard
-          </Link>
-        </div>
-        
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -131,30 +114,71 @@ export default function MasterControlsPage() {
           {/* Access Control */}
           <AccessControlControl {...accessControlData} />
           
-          {/* Vendor Management Control */}
-          <VendorManagementControl />
+          {/* Security Risk Management Control */}
+          <SecurityRiskManagementControl />
           
-          {/* Incident Response Control */}
-          <IncidentResponseControl />
-          
-          {/* Physical Security Control */}
-          <PhysicalSecurityControl />
-          
-          {/* Technical Safeguards Control */}
-          <TechnicalSafeguardsControl />
-          
-          {/* Audit & Monitoring Control */}
-          <AuditMonitoringControl />
-          
-          {/* Phase 2 Complete! */}
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-            <h3 className="text-2xl font-bold text-green-800 mb-2">🎉 Phase 2 Complete!</h3>
-            <p className="text-green-700 mb-4">
-              All 7 Master Controls are now implemented and ready for use.
-            </p>
-            <p className="text-sm text-green-600">
-              Next: Phase 3 - Evidence Management System
-            </p>
+          {/* Coming Soon Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Vendor Management & Business Associates',
+                description: 'Oversees third-party vendors who handle patient information',
+                icon: '🤝',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Risk Assessment & Management',
+                description: 'Identifies and mitigates potential threats to patient information',
+                icon: '⚠️',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Incident Response & Breach Management',
+                description: 'Establishes procedures for responding to security incidents',
+                icon: '🚨',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Physical Security & Facility Controls',
+                description: 'Protects physical access to patient information and systems',
+                icon: '🏢',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Technical Safeguards & System Security',
+                description: 'Implements technology-based protections for electronic data',
+                icon: '💻',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Policies & Procedures Management',
+                description: 'Develops and maintains formal HIPAA compliance guidelines',
+                icon: '📋',
+                status: 'Coming Soon'
+              },
+              {
+                title: 'Audit & Monitoring',
+                description: 'Regularly reviews system activity and compliance records',
+                icon: '🔍',
+                status: 'Coming Soon'
+              }
+            ].map((control, index) => (
+              <div key={index} className="bg-white rounded-lg shadow border border-gray-200 p-6 opacity-75">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="text-2xl">{control.icon}</div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{control.title}</h3>
+                    <p className="text-sm text-gray-600">{control.description}</p>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-500">{control.status}</span>
+                  <div className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+                    Phase 2
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -454,17 +454,20 @@ export function formatBusinessTimeEstimate(hours: number): string {
   }
 }
 
-/**
- * Generate a unique identifier
- * 
- * Business Purpose: Creates unique IDs for evidence items, guidance, and other entities
- * 
- * User Experience: Ensures all items have unique identifiers for tracking
- */
-export function generateUniqueId(): string {
-  return `id_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-}
+// ============================================================================
+// EXPORT ALL UTILITIES
+// ============================================================================
+export {
+  getBusinessStatusMessage,
+  getBusinessPriorityMessage,
+  getBusinessEvidenceStatusMessage,
+  calculateComplianceProgress,
+  calculateEstimatedCompletion,
+  calculateMasterControlSummary,
+  validateMasterControl,
+  validateEvidenceItem,
+  formatBusinessDate,
+  formatBusinessPercentage,
+  formatBusinessTimeEstimate
+};
 
-// ============================================================================
-// ALL UTILITIES ARE ALREADY EXPORTED WITH 'export function' ABOVE
-// ============================================================================
