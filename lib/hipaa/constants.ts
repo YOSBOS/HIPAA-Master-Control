@@ -496,23 +496,5 @@ export const MASTER_CONTROL_DESCRIPTIONS = {
 } as const;
 
 // ============================================================================
-// EXPORT ALL CONSTANTS
+// ALL CONSTANTS ARE ALREADY EXPORTED WITH 'export const' ABOVE
 // ============================================================================
-
-export {
-  PROCESS_DIFFICULTY,
-  PRIORITY_LEVELS,
-  EVIDENCE_TYPES,
-  EVIDENCE_STATUS,
-  COMPLIANCE_STATUS,
-  GUIDANCE_TYPES,
-  GUIDANCE_CONTEXT,
-  ACTION_TYPES,
-  SUGGESTION_PRIORITY,
-  NOTIFICATION_TYPES,
-  NOTIFICATION_PRIORITY,
-  REPORT_TYPES,
-  REPORT_FORMATS,
-  CHART_TYPES,
-  MASTER_CONTROL_DESCRIPTIONS,
-};
