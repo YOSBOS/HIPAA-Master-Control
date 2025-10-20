@@ -124,7 +124,6 @@ services/
 - **State Management**: React Query (TanStack Query)
 - **Forms**: React Hook Form
 - **Testing**: Vitest with Playwright
-- **Storybook**: Component development and documentation
 
 ## 📋 HIPAA Compliance Features
 
@@ -163,12 +162,7 @@ services/
    npm run dev
    ```
 
-3. **Run Storybook**
-   ```bash
-   npm run storybook
-   ```
-
-4. **Run Tests**
+3. **Run Tests**
    ```bash
    npm test
    ```
