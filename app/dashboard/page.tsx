@@ -11,18 +11,13 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  AcademicCapIcon,
-  KeyIcon,
-  HandshakeIcon,
+  CheckCircleIcon,
+  ClockIcon,
   ExclamationTriangleIcon,
-  ShieldExclamationIcon,
-  BuildingOfficeIcon,
-  ComputerDesktopIcon,
   DocumentTextIcon,
-  MagnifyingGlassIcon,
-  ChartBarIcon,
-  CogIcon,
-  DocumentMagnifyingGlassIcon
+  LightBulbIcon,
+  ShieldCheckIcon,
+  ChartBarIcon
 } from '@heroicons/react/24/outline';
 
 interface DashboardCardProps {
@@ -84,7 +79,7 @@ export default function Dashboard() {
     {
       title: 'Foundation Demo',
       description: 'Core philosophy, data models, and architecture demonstration',
-      icon: <DocumentMagnifyingGlassIcon className="w-6 h-6 text-blue-600" />,
+      icon: <DocumentTextIcon className="w-6 h-6 text-blue-600" />,
       href: '/foundation-demo',
       status: 'completed',
       phase: 'Phase 1'
@@ -102,7 +97,7 @@ export default function Dashboard() {
     {
       title: 'Workforce Training & Awareness',
       description: 'Ensures all staff understand how to protect patient information',
-      icon: <AcademicCapIcon className="w-6 h-6 text-blue-600" />,
+      icon: <CheckCircleIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#workforce-training',
       status: 'completed',
       phase: 'Phase 2'
@@ -110,7 +105,7 @@ export default function Dashboard() {
     {
       title: 'Access Control & User Management',
       description: 'Manages who has access to patient information systems and what they can do',
-      icon: <KeyIcon className="w-6 h-6 text-blue-600" />,
+      icon: <ShieldCheckIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#access-control',
       status: 'completed',
       phase: 'Phase 2'
@@ -118,7 +113,7 @@ export default function Dashboard() {
     {
       title: 'Vendor Management & Business Associates',
       description: 'Oversees third-party vendors who handle patient information',
-      icon: <HandshakeIcon className="w-6 h-6 text-blue-600" />,
+      icon: <CheckCircleIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#vendor-management',
       status: 'planned',
       phase: 'Phase 2'
@@ -134,7 +129,7 @@ export default function Dashboard() {
     {
       title: 'Incident Response & Breach Management',
       description: 'Establishes procedures for responding to security incidents',
-      icon: <ShieldExclamationIcon className="w-6 h-6 text-blue-600" />,
+      icon: <ExclamationTriangleIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#incident-response',
       status: 'planned',
       phase: 'Phase 2'
@@ -142,7 +137,7 @@ export default function Dashboard() {
     {
       title: 'Physical Security & Facility Controls',
       description: 'Protects physical access to patient information and systems',
-      icon: <BuildingOfficeIcon className="w-6 h-6 text-blue-600" />,
+      icon: <CheckCircleIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#physical-security',
       status: 'planned',
       phase: 'Phase 2'
@@ -150,7 +145,7 @@ export default function Dashboard() {
     {
       title: 'Technical Safeguards & System Security',
       description: 'Implements technology-based protections for electronic data',
-      icon: <ComputerDesktopIcon className="w-6 h-6 text-blue-600" />,
+      icon: <ShieldCheckIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#technical-safeguards',
       status: 'planned',
       phase: 'Phase 2'
@@ -166,7 +161,7 @@ export default function Dashboard() {
     {
       title: 'Audit & Monitoring',
       description: 'Regularly reviews system activity and compliance records',
-      icon: <MagnifyingGlassIcon className="w-6 h-6 text-blue-600" />,
+      icon: <DocumentTextIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls#audit-monitoring',
       status: 'planned',
       phase: 'Phase 2'
@@ -184,7 +179,7 @@ export default function Dashboard() {
     {
       title: 'AI Guidance & Mentor System',
       description: 'Business language explanations and actionable suggestions',
-      icon: <CogIcon className="w-6 h-6 text-purple-600" />,
+      icon: <ClockIcon className="w-6 h-6 text-purple-600" />,
       href: '/ai-guidance',
       status: 'planned',
       phase: 'Phase 4'
