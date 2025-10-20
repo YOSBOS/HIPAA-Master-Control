@@ -87,8 +87,16 @@ export default function Dashboard() {
     
     // Phase 2: Master Controls Implementation
     {
-      title: 'Master Controls',
-      description: '8-9 business process areas that clinic managers understand and can act on',
+      title: 'User Compliance Dashboard',
+      description: 'Main user interface for HIPAA compliance management - how end users will interact with the system',
+      icon: <ShieldCheckIcon className="w-6 h-6 text-green-600" />,
+      href: '/compliance-dashboard',
+      status: 'completed',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Master Controls (Developer)',
+      description: 'Developer view of all Master Controls on one page for development tracking',
       icon: <ChartBarIcon className="w-6 h-6 text-blue-600" />,
       href: '/master-controls',
       status: 'in-progress',
@@ -166,6 +174,14 @@ export default function Dashboard() {
       status: 'planned',
       phase: 'Phase 2'
     },
+    {
+      title: 'Compliance Maturity Scoring',
+      description: '5-level scoring system (Poor, Moderate, Good, Great, Excellent) with business-friendly insights',
+      icon: <ChartBarIcon className="w-6 h-6 text-green-600" />,
+      href: '/compliance-scoring',
+      status: 'completed',
+      phase: 'Phase 2'
+    },
     
     // Future Phases
     {
@@ -210,6 +226,7 @@ export default function Dashboard() {
       { href: '/dashboard', label: 'Dashboard' },
       { href: '/foundation-demo', label: 'Foundation Demo' },
       { href: '/master-controls', label: 'Master Controls' },
+      { href: '/compliance-scoring', label: 'Compliance Scoring' },
     ];
 
     return (
@@ -246,9 +263,18 @@ export default function Dashboard() {
               <h1 className="text-3xl font-bold text-gray-900">HIPAA Master Control Tracker</h1>
               <p className="text-lg text-gray-600 mt-1">Business Language Over Legal Jargon</p>
             </div>
-            <div className="text-right">
-              <p className="text-sm text-gray-500">Current Phase</p>
-              <p className="text-lg font-semibold text-blue-600">Phase 2: Master Controls</p>
+            <div className="flex items-center space-x-4">
+              <div className="text-right">
+                <p className="text-sm text-gray-500">Current Phase</p>
+                <p className="text-lg font-semibold text-blue-600">Phase 2: Master Controls</p>
+              </div>
+              <Link
+                href="/compliance-dashboard"
+                className="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+              >
+                <ShieldCheckIcon className="w-5 h-5 mr-2" />
+                View Client Dashboard
+              </Link>
             </div>
           </div>
         </div>
