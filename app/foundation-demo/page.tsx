@@ -7,13 +7,9 @@
 
 import { 
   MASTER_CONTROL_DESCRIPTIONS,
-  MASTER_CONTROL_CATEGORIES,
-  PROCESS_DIFFICULTY,
-  PRIORITY_LEVELS,
   getBusinessStatusMessage,
   getBusinessPriorityMessage,
-  formatBusinessDate,
-  formatBusinessPercentage
+  formatBusinessDate
 } from '../../lib/hipaa';
 
 export default function FoundationDemo() {
@@ -37,10 +33,10 @@ export default function FoundationDemo() {
               🎯 Core Philosophy
             </h2>
             <p className="text-blue-800 text-lg leading-relaxed">
-              Instead of asking: <em>"Do you comply with §164.308(a)(1)(ii)(A) Risk Analysis?"</em>
+              Instead of asking: <em>&ldquo;Do you comply with §164.308(a)(1)(ii)(A) Risk Analysis?&rdquo;</em>
             </p>
             <p className="text-blue-800 text-lg leading-relaxed mt-2">
-              We ask: <strong>"Have you reviewed how your clinic identifies and documents risks to patient information each year?"</strong>
+              We ask: <strong>&ldquo;Have you reviewed how your clinic identifies and documents risks to patient information each year?&rdquo;</strong>
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">✅ Same compliance goal</span>

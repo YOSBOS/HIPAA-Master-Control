@@ -14,12 +14,12 @@ export default function Home() {
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             🎯 Core Philosophy
           </h2>
-          <p className="text-gray-700 mb-4">
-            Instead of asking: <em>"Do you comply with §164.308(a)(1)(ii)(A) Risk Analysis?"</em>
-          </p>
-          <p className="text-gray-700 mb-6">
-            We ask: <strong>"Have you reviewed how your clinic identifies and documents risks to patient information each year?"</strong>
-          </p>
+                  <p className="text-gray-700 mb-4">
+                    Instead of asking: <em>&ldquo;Do you comply with §164.308(a)(1)(ii)(A) Risk Analysis?&rdquo;</em>
+                  </p>
+                  <p className="text-gray-700 mb-6">
+                    We ask: <strong>&ldquo;Have you reviewed how your clinic identifies and documents risks to patient information each year?&rdquo;</strong>
+                  </p>
           <div className="flex flex-wrap justify-center gap-2">
             <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">✅ Same compliance goal</span>
             <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">❌ No legal jargon</span>
