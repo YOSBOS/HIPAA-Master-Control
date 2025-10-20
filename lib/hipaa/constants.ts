@@ -500,7 +500,6 @@ export const MASTER_CONTROL_DESCRIPTIONS = {
 // ============================================================================
 
 export {
-  MASTER_CONTROL_CATEGORIES,
   PROCESS_DIFFICULTY,
   PRIORITY_LEVELS,
   EVIDENCE_TYPES,
