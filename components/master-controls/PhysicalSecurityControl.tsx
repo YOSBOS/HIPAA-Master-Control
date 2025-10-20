@@ -5,12 +5,12 @@ import {
   AIGuidance,
   EVIDENCE_TYPES,
   MASTER_CONTROL_STATUSES,
-  BUSINESS_PROCESS_CATEGORIES,
   getMasterControlStatusDisplay,
   calculateMasterControlProgress,
   formatBusinessDate,
   generateUniqueId
 } from '../../types/hipaa';
+import { MASTER_CONTROL_CATEGORIES } from '../../lib/hipaa/constants';
 import { CheckCircleIcon, ExclamationTriangleIcon, ClockIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 
 const PhysicalSecurityControl: React.FC = () => {
