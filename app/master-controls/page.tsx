@@ -6,6 +6,8 @@
  */
 
 import React from 'react';
+import Link from 'next/link';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import WorkforceTrainingControl from '../../components/master-controls/WorkforceTrainingControl';
 import AccessControlControl from '../../components/master-controls/AccessControlControl';
 
@@ -86,6 +88,17 @@ export default function MasterControlsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Return to Dashboard Button */}
+        <div className="mb-6">
+          <Link 
+            href="/dashboard" 
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            Return to Dashboard
+          </Link>
+        </div>
+        
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
