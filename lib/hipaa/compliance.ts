@@ -4,55 +4,16 @@
  */
 
 import { HIPAAControl } from './controls';
+import { 
+  ComplianceMaturityLevel, 
+  EvidenceScore, 
+  MasterControlScore, 
+  OverallComplianceScore 
+} from './scoring';
 
 // ============================================================================
-// COMPLIANCE MATURITY LEVELS (copied to avoid circular imports)
+// COMPLIANCE INTERFACES
 // ============================================================================
-
-export type ComplianceMaturityLevel = 
-  | 'Poor'        // 0-20% - Basic compliance issues, significant gaps
-  | 'Moderate'    // 21-40% - Some controls in place, but inconsistent
-  | 'Good'        // 41-60% - Most controls working, minor gaps
-  | 'Great'       // 61-80% - Strong compliance program, well-managed
-  | 'Excellent';  // 81-100% - Exemplary compliance, industry leading
-
-export interface EvidenceScore {
-  evidenceId: string;
-  type: string;
-  status: string;
-  baseScore: number;
-  typeWeight: number;
-  statusWeight: number;
-  finalScore: number;
-  isCurrent: boolean;
-  daysSinceUpdate: number;
-}
-
-export interface MasterControlScore {
-  controlId: string;
-  controlName: string;
-  totalPossibleScore: number;
-  actualScore: number;
-  percentageScore: number;
-  maturityLevel: ComplianceMaturityLevel;
-  evidenceScores: EvidenceScore[];
-  strengths: string[];
-  weaknesses: string[];
-  recommendations: string[];
-  lastUpdated: Date;
-}
-
-export interface OverallComplianceScore {
-  totalScore: number;
-  maxPossibleScore: number;
-  percentageScore: number;
-  maturityLevel: ComplianceMaturityLevel;
-  masterControlScores: MasterControlScore[];
-  overallStrengths: string[];
-  overallWeaknesses: string[];
-  priorityActions: string[];
-  calculatedAt: Date;
-}
 
 export interface ComplianceAssessment {
   id: string;

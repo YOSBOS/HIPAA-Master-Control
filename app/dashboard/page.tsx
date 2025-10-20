@@ -227,6 +227,7 @@ export default function Dashboard() {
       { href: '/foundation-demo', label: 'Foundation Demo' },
       { href: '/master-controls', label: 'Master Controls' },
       { href: '/compliance-scoring', label: 'Compliance Scoring' },
+      { href: '/hipaa-standards', label: 'HIPAA Standards' },
     ];
 
     return (
