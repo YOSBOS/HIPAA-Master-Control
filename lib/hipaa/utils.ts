@@ -455,19 +455,5 @@ export function formatBusinessTimeEstimate(hours: number): string {
 }
 
 // ============================================================================
-// EXPORT ALL UTILITIES
+// ALL UTILITIES ARE ALREADY EXPORTED WITH 'export function' ABOVE
 // ============================================================================
-
-export {
-  getBusinessStatusMessage,
-  getBusinessPriorityMessage,
-  getBusinessEvidenceStatusMessage,
-  calculateComplianceProgress,
-  calculateEstimatedCompletion,
-  calculateMasterControlSummary,
-  validateMasterControl,
-  validateEvidenceItem,
-  formatBusinessDate,
-  formatBusinessPercentage,
-  formatBusinessTimeEstimate
-};
