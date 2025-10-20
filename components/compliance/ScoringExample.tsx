@@ -140,16 +140,18 @@ export const ScoringExample: React.FC = () => {
     );
     scores.push(vendorScore);
 
-    // Override scores to match maturity level labels for visual consistency
-    const maturityLevelScores = {
-      poor: 15,
-      moderate: 35,
-      good: 55,
-      great: 75,
-      excellent: 90,
+    // Override scores to demonstrate realistic maturity level ranges
+    const maturityLevelRanges = {
+      poor: { min: 5, max: 20 },      // 0-20% range
+      moderate: { min: 25, max: 40 }, // 21-40% range  
+      good: { min: 45, max: 60 },     // 41-60% range
+      great: { min: 65, max: 80 },    // 61-80% range
+      excellent: { min: 85, max: 95 }, // 81-100% range
     };
 
-    const targetPercentage = maturityLevelScores[example as keyof typeof maturityLevelScores];
+    const range = maturityLevelRanges[example as keyof typeof maturityLevelRanges];
+    // Use a realistic percentage within the range
+    const targetPercentage = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
     
     // Adjust all scores to align with the target maturity level
     scores.forEach(score => {
@@ -229,11 +231,11 @@ export const ScoringExample: React.FC = () => {
   }, [selectedExample]);
 
   const exampleDescriptions = {
-    poor: 'Poor (15%): Basic compliance issues, significant gaps',
-    moderate: 'Moderate (35%): Some controls in place, but inconsistent',
-    good: 'Good (55%): Most controls working, minor gaps',
-    great: 'Great (75%): Strong compliance program, well-managed',
-    excellent: 'Excellent (90%): Exemplary compliance, industry leading',
+    poor: 'Poor (0-20%): Basic compliance issues, significant gaps',
+    moderate: 'Moderate (21-40%): Some controls in place, but inconsistent',
+    good: 'Good (41-60%): Most controls working, minor gaps',
+    great: 'Great (61-80%): Strong compliance program, well-managed',
+    excellent: 'Excellent (81-100%): Exemplary compliance, industry leading',
   };
 
   return (

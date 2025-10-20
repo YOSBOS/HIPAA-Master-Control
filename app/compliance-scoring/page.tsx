@@ -66,11 +66,11 @@ export default function ComplianceScoringPage() {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">🎯 5 Maturity Levels</h3>
                   <ul className="space-y-1 text-sm text-gray-600">
-                  <li>• <strong>Poor (15%):</strong> Basic compliance issues, significant gaps</li>
-                  <li>• <strong>Moderate (35%):</strong> Some controls in place, but inconsistent</li>
-                  <li>• <strong>Good (55%):</strong> Most controls working, minor gaps</li>
-                  <li>• <strong>Great (75%):</strong> Strong compliance program, well-managed</li>
-                  <li>• <strong>Excellent (90%):</strong> Exemplary compliance, industry leading</li>
+                  <li>• <strong>Poor (0-20%):</strong> Basic compliance issues, significant gaps</li>
+                  <li>• <strong>Moderate (21-40%):</strong> Some controls in place, but inconsistent</li>
+                  <li>• <strong>Good (41-60%):</strong> Most controls working, minor gaps</li>
+                  <li>• <strong>Great (61-80%):</strong> Strong compliance program, well-managed</li>
+                  <li>• <strong>Excellent (81-100%):</strong> Exemplary compliance, industry leading</li>
                   </ul>
                 </div>
                 

@@ -28,11 +28,11 @@ export type ComplianceMaturityLevel =
  * Compliance Maturity Scoring Constants
  */
 export const MATURITY_SCORING = {
-  POOR: { min: 0, max: 20, label: 'Poor' as const },
-  MODERATE: { min: 21, max: 40, label: 'Moderate' as const },
-  GOOD: { min: 41, max: 60, label: 'Good' as const },
-  GREAT: { min: 61, max: 80, label: 'Great' as const },
-  EXCELLENT: { min: 81, max: 100, label: 'Excellent' as const },
+  POOR: { min: 0, max: 20, label: 'Poor' as const },        // 0-20%
+  MODERATE: { min: 21, max: 40, label: 'Moderate' as const }, // 21-40%
+  GOOD: { min: 41, max: 60, label: 'Good' as const },        // 41-60%
+  GREAT: { min: 61, max: 80, label: 'Great' as const },       // 61-80%
+  EXCELLENT: { min: 81, max: 100, label: 'Excellent' as const }, // 81-100%
 } as const;
 
 // ============================================================================
@@ -278,11 +278,12 @@ export function calculateOverallComplianceScore(
  * Determine maturity level based on percentage score
  */
 export function determineMaturityLevel(percentageScore: number): ComplianceMaturityLevel {
-  if (percentageScore >= 81) return 'Excellent';
-  if (percentageScore >= 61) return 'Great';
-  if (percentageScore >= 41) return 'Good';
-  if (percentageScore >= 21) return 'Moderate';
-  return 'Poor';
+  // Correct maturity level ranges
+  if (percentageScore >= 81) return 'Excellent';    // 81-100%
+  if (percentageScore >= 61) return 'Great';        // 61-80%
+  if (percentageScore >= 41) return 'Good';          // 41-60%
+  if (percentageScore >= 21) return 'Moderate';      // 21-40%
+  return 'Poor';                                     // 0-20%
 }
 
 // ============================================================================

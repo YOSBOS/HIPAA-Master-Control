@@ -129,8 +129,8 @@ export default function ComplianceScoringDemoPage() {
         );
         scores.push(riskScore);
 
-        // Override scores to show "Good" maturity level (55%) for demo consistency
-        const targetPercentage = 55;
+        // Override scores to show "Good" maturity level (within 41-60% range) for demo consistency
+        const targetPercentage = 52; // Realistic score within Good range (41-60%)
         
         // Adjust all scores to align with the target maturity level
         scores.forEach(score => {
@@ -229,7 +229,7 @@ export default function ComplianceScoringDemoPage() {
             </div>
             <div className="flex-1">
               <h2 className="text-xl font-bold text-blue-900 mb-3">
-                Sample Organization: "Good" Maturity Level (55%)
+                Sample Organization: "Good" Maturity Level (52%)
               </h2>
               <p className="text-blue-800 mb-4">
                 This demo shows a healthcare organization with a "Good" compliance maturity level. 

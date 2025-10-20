@@ -567,11 +567,12 @@ export class ComplianceManager {
   }
 
   private determineMaturityLevel(percentageScore: number): ComplianceMaturityLevel {
-    if (percentageScore >= 81) return 'Excellent';
-    if (percentageScore >= 61) return 'Great';
-    if (percentageScore >= 41) return 'Good';
-    if (percentageScore >= 21) return 'Moderate';
-    return 'Poor';
+    // Correct maturity level ranges
+    if (percentageScore >= 81) return 'Excellent';    // 81-100%
+    if (percentageScore >= 61) return 'Great';        // 61-80%
+    if (percentageScore >= 41) return 'Good';          // 41-60%
+    if (percentageScore >= 21) return 'Moderate';      // 21-40%
+    return 'Poor';                                     // 0-20%
   }
 
   private generateStrengths(evidenceScores: EvidenceScore[], controlName: string): string[] {
