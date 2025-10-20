@@ -19,7 +19,7 @@ const VendorManagementControl: React.FC = () => {
     id: 'mc-vendor-management',
     name: 'Vendor Management & Business Associates',
     businessDescription: 'Oversees third-party vendors who handle patient information and ensures they meet HIPAA requirements.',
-    category: BUSINESS_PROCESS_CATEGORIES.VENDORS,
+    category: MASTER_CONTROL_CATEGORIES.VENDORS,
     status: 'in_progress',
     progress: 60,
     lastActivityDate: new Date('2024-10-18T09:30:00Z'),

@@ -19,7 +19,7 @@ const TechnicalSafeguardsControl: React.FC = () => {
     id: 'mc-technical-safeguards',
     name: 'Technical Safeguards & System Security',
     businessDescription: 'Implements technology-based protections for electronic patient information and system security.',
-    category: BUSINESS_PROCESS_CATEGORIES.TECHNOLOGY,
+    category: MASTER_CONTROL_CATEGORIES.TECHNOLOGY,
     status: 'all_set',
     progress: 85,
     lastActivityDate: new Date('2024-10-20T16:30:00Z'),

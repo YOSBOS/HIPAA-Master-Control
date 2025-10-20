@@ -19,7 +19,7 @@ const AuditMonitoringControl: React.FC = () => {
     id: 'mc-audit-monitoring',
     name: 'Audit & Monitoring',
     businessDescription: 'Regularly reviews system activity and compliance records to ensure ongoing HIPAA adherence.',
-    category: BUSINESS_PROCESS_CATEGORIES.COMPLIANCE,
+    category: MASTER_CONTROL_CATEGORIES.COMPLIANCE,
     status: 'in_progress',
     progress: 55,
     lastActivityDate: new Date('2024-10-14T12:20:00Z'),

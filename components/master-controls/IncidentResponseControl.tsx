@@ -19,7 +19,7 @@ const IncidentResponseControl: React.FC = () => {
     id: 'mc-incident-response',
     name: 'Incident Response & Breach Management',
     businessDescription: 'Establishes procedures for responding to security incidents and potential breaches of patient information.',
-    category: BUSINESS_PROCESS_CATEGORIES.SECURITY,
+    category: MASTER_CONTROL_CATEGORIES.SECURITY,
     status: 'needs_attention',
     progress: 45,
     lastActivityDate: new Date('2024-10-12T11:15:00Z'),

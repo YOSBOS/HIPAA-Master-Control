@@ -19,7 +19,7 @@ const PhysicalSecurityControl: React.FC = () => {
     id: 'mc-physical-security',
     name: 'Physical Security & Facility Controls',
     businessDescription: 'Protects physical access to patient information and systems through facility security measures.',
-    category: BUSINESS_PROCESS_CATEGORIES.SECURITY,
+    category: MASTER_CONTROL_CATEGORIES.SECURITY,
     status: 'in_progress',
     progress: 70,
     lastActivityDate: new Date('2024-10-16T13:45:00Z'),
