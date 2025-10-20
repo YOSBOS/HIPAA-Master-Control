@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import DashboardNav from '../../components/layout/DashboardNav';
 
 export default function DashboardLayout({
   children,
@@ -14,7 +13,6 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardNav />
       <main>{children}</main>
     </div>
   );
