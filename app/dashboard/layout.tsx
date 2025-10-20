@@ -1,10 +1,11 @@
-import { Metadata } from 'next';
-import { DashboardSidebar, DashboardHeader } from '@/components';
+/**
+ * Dashboard Layout
+ * 
+ * Provides consistent layout for all dashboard pages
+ */
 
-export const metadata: Metadata = {
-  title: 'Dashboard - HIPAA Master Control',
-  description: 'HIPAA Master Control Tracker Dashboard',
-};
+import React from 'react';
+import DashboardNav from '../../components/layout/DashboardNav';
 
 export default function DashboardLayout({
   children,
@@ -13,13 +14,8 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardHeader />
-      <div className="flex">
-        <DashboardSidebar />
-        <main className="flex-1 p-6">
-          {children}
-        </main>
-      </div>
+      <DashboardNav />
+      <main>{children}</main>
     </div>
   );
 }

@@ -1,22 +1,260 @@
-import { Metadata } from 'next';
-import { DashboardOverview, Card, CardHeader } from '@/components';
+/**
+ * HIPAA Master Control Tracker - Main Dashboard
+ * 
+ * This is the central hub for the entire project, providing easy navigation
+ * to all features and pages we're building.
+ */
 
-export const metadata: Metadata = {
-  title: 'Dashboard Overview - HIPAA Master Control',
-  description: 'HIPAA Master Control Tracker Dashboard Overview',
-};
+import React from 'react';
+import Link from 'next/link';
+import { 
+  AcademicCapIcon,
+  KeyIcon,
+  HandshakeIcon,
+  ExclamationTriangleIcon,
+  ShieldExclamationIcon,
+  BuildingOfficeIcon,
+  ComputerDesktopIcon,
+  DocumentTextIcon,
+  MagnifyingGlassIcon,
+  ChartBarIcon,
+  CogIcon,
+  DocumentMagnifyingGlassIcon
+} from '@heroicons/react/24/outline';
 
-export default function DashboardPage() {
+interface DashboardCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  href: string;
+  status: 'completed' | 'in-progress' | 'planned';
+  phase: string;
+}
+
+function DashboardCard({ title, description, icon, href, status, phase }: DashboardCardProps) {
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'completed': return 'bg-green-100 text-green-800 border-green-200';
+      case 'in-progress': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'planned': return 'bg-gray-100 text-gray-800 border-gray-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'completed': return '✅ Complete';
+      case 'in-progress': return '🚧 In Progress';
+      case 'planned': return '📋 Planned';
+      default: return '📋 Planned';
+    }
+  };
+
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader 
-          title="HIPAA Master Control Dashboard"
-          subtitle="Monitor and manage your HIPAA compliance controls"
-        />
-      </Card>
-      
-      <DashboardOverview />
+    <Link href={href} className="block">
+      <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow duration-200">
+        <div className="flex items-start space-x-4">
+          <div className="flex-shrink-0">
+            <div className="p-3 bg-blue-100 rounded-lg">
+              {icon}
+            </div>
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+            <p className="text-sm text-gray-600 mb-3">{description}</p>
+            <div className="flex items-center justify-between">
+              <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(status)}`}>
+                {getStatusText(status)}
+              </span>
+              <span className="text-xs text-gray-500">{phase}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default function Dashboard() {
+  const dashboardCards: DashboardCardProps[] = [
+    // Phase 1: Foundation & Core Architecture
+    {
+      title: 'Foundation Demo',
+      description: 'Core philosophy, data models, and architecture demonstration',
+      icon: <DocumentMagnifyingGlassIcon className="w-6 h-6 text-blue-600" />,
+      href: '/foundation-demo',
+      status: 'completed',
+      phase: 'Phase 1'
+    },
+    
+    // Phase 2: Master Controls Implementation
+    {
+      title: 'Master Controls',
+      description: '8-9 business process areas that clinic managers understand and can act on',
+      icon: <ChartBarIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls',
+      status: 'in-progress',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Workforce Training & Awareness',
+      description: 'Ensures all staff understand how to protect patient information',
+      icon: <AcademicCapIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#workforce-training',
+      status: 'completed',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Access Control & User Management',
+      description: 'Manages who has access to patient information systems and what they can do',
+      icon: <KeyIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#access-control',
+      status: 'completed',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Vendor Management & Business Associates',
+      description: 'Oversees third-party vendors who handle patient information',
+      icon: <HandshakeIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#vendor-management',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Risk Assessment & Management',
+      description: 'Identifies and mitigates potential threats to patient information',
+      icon: <ExclamationTriangleIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#risk-assessment',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Incident Response & Breach Management',
+      description: 'Establishes procedures for responding to security incidents',
+      icon: <ShieldExclamationIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#incident-response',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Physical Security & Facility Controls',
+      description: 'Protects physical access to patient information and systems',
+      icon: <BuildingOfficeIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#physical-security',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Technical Safeguards & System Security',
+      description: 'Implements technology-based protections for electronic data',
+      icon: <ComputerDesktopIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#technical-safeguards',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Policies & Procedures Management',
+      description: 'Develops and maintains formal HIPAA compliance guidelines',
+      icon: <DocumentTextIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#policies-procedures',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    {
+      title: 'Audit & Monitoring',
+      description: 'Regularly reviews system activity and compliance records',
+      icon: <MagnifyingGlassIcon className="w-6 h-6 text-blue-600" />,
+      href: '/master-controls#audit-monitoring',
+      status: 'planned',
+      phase: 'Phase 2'
+    },
+    
+    // Future Phases
+    {
+      title: 'Evidence Management System',
+      description: 'Upload, confirm, record, and assign evidence functionality',
+      icon: <DocumentTextIcon className="w-6 h-6 text-purple-600" />,
+      href: '/evidence-management',
+      status: 'planned',
+      phase: 'Phase 3'
+    },
+    {
+      title: 'AI Guidance & Mentor System',
+      description: 'Business language explanations and actionable suggestions',
+      icon: <CogIcon className="w-6 h-6 text-purple-600" />,
+      href: '/ai-guidance',
+      status: 'planned',
+      phase: 'Phase 4'
+    },
+    {
+      title: 'Compliance Engine',
+      description: 'Hidden HIPAA mapping and regulatory tracking system',
+      icon: <ChartBarIcon className="w-6 h-6 text-purple-600" />,
+      href: '/compliance-engine',
+      status: 'planned',
+      phase: 'Phase 5'
+    },
+    {
+      title: 'Reports & Analytics',
+      description: 'Progress tracking and business compliance reports',
+      icon: <ChartBarIcon className="w-6 h-6 text-purple-600" />,
+      href: '/reports',
+      status: 'planned',
+      phase: 'Phase 6'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">HIPAA Master Control Tracker</h1>
+              <p className="text-lg text-gray-600 mt-1">Business Language Over Legal Jargon</p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm text-gray-500">Current Phase</p>
+              <p className="text-lg font-semibold text-blue-600">Phase 2: Master Controls</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Philosophy Banner */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+          <h2 className="text-xl font-semibold text-blue-900 mb-3">🎯 Core Philosophy</h2>
+          <p className="text-blue-800 mb-4">
+            Instead of managing 40+ technical HIPAA controls, focus on 8-9 key business processes 
+            that clinic managers understand and can act on.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">✅ Same compliance goal</span>
+            <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">❌ No legal jargon</span>
+            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">💡 Action the clinic can actually perform</span>
+          </div>
+        </div>
+
+        {/* Dashboard Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {dashboardCards.map((card, index) => (
+            <DashboardCard key={index} {...card} />
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-600">
+            Building the revolutionary HIPAA Master Control Tracker
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            Phase 1 Complete • Phase 2 In Progress • Phases 3-8 Planned
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
