@@ -28,15 +28,23 @@ export default function Home() {
         </div>
         
         <div className="space-y-4">
-          <Link 
-            href="/foundation-demo" 
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-          >
-            View Foundation Demo
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/foundation-demo" 
+              className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              View Foundation Demo
+            </Link>
+            <Link 
+              href="/master-controls" 
+              className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+            >
+              Master Controls
+            </Link>
+          </div>
           <div className="text-sm text-gray-500">
             <p>Phase 1 Complete: Foundation & Core Architecture</p>
-            <p>Ready for Phase 2: Master Controls Implementation</p>
+            <p>Phase 2 In Progress: Master Controls Implementation</p>
           </div>
         </div>
       </div>
